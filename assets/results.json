@@ -1,1 +1,1 @@
-[{"character":{"name":"kim","health":36,"attack":20,"defense":5,"hasUsedItem":true},"result":"승리","defeatedMonsters":3,"timestamp":"2024-11-05T16:38:09.794382"}]
+[{"character":{"name":"kim","health":36,"attack":20,"defense":5,"hasUsedItem":true},"result":"승리","defeatedMonsters":3,"timestamp":"2024-11-05T16:38:09.794382"},{"character":{"name":"sony","health":32,"attack":20,"defense":5,"hasUsedItem":true},"result":"패배","defeatedMonsters":1,"timestamp":"2024-11-05T16:56:21.868919"}]

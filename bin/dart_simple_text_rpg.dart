@@ -29,7 +29,6 @@ class Character {
     }
   }
 
-
   void useItem() {
     if (!hasUsedItem) {
       attack *= 2;
@@ -263,12 +262,58 @@ void applyBonusHealth(Character character) {
   }
 }
 
+void viewRecords() {
+  final file = File('assets/results.json');
+  if (file.existsSync()) {
+    String contents = file.readAsStringSync();
+    if (contents.isNotEmpty) {
+      List<dynamic> results = jsonDecode(contents);
+      print('\n저장된 기록:');
+      for (var result in results) {
+        print('캐릭터 이름: ${result['character']['name']}');
+        print('결과: ${result['result']}');
+        print('물리친 몬스터 수: ${result['defeatedMonsters']}');
+        print('시간: ${result['timestamp']}');
+        print('---');
+      }
+    } else {
+      print('\n저장된 기록이 없습니다.');
+    }
+  } else {
+    print('\n저장된 기록이 없습니다.');
+  }
+}
+
 late Character character;
 List<Monster> monsters = [];
 
 void main() async {
-  await loadCharacterStats();
-  await loadMonsterStats();
-  Game game = Game(character, monsters);
-  game.startGame();
+  while (true) {
+    print('\n============================');
+    print('🎮 환영합니다!');
+    print('============================');
+    print('1: 게임 시작');
+    print('2: 기록 보기');
+    print('3: 종료');
+    print('============================');
+    print('선택하세요 :');
+    String? choice = stdin.readLineSync();
+
+    switch (choice) {
+      case '1':
+        await loadCharacterStats();
+        await loadMonsterStats();
+        Game game = Game(character, monsters);
+        game.startGame();
+        break;
+      case '2':
+        viewRecords();
+        break;
+      case '3':
+        print('\n게임을 종료합니다.');
+        return;
+      default:
+        print('\n잘못된 선택입니다. 1, 2, 3 중 하나를 선택해주세요.');
+    }
+  }
 }
