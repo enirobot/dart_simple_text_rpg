@@ -1,0 +1,17 @@
+[
+  {
+    "name": "큰거미",
+    "health": 20,
+    "maxAttack": 10
+  },
+  {
+    "name": "빗자루",
+    "health": 30,
+    "maxAttack": 10
+  },
+  {
+    "name": "드래곤",
+    "health": 40,
+    "maxAttack": 10
+  }
+]
